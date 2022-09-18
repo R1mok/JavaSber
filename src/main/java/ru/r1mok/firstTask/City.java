@@ -1,4 +1,4 @@
-package main.java.ru.r1mok;
+package main.java.ru.r1mok.firstTask;
 
 import lombok.Data;
 

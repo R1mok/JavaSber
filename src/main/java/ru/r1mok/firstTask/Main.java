@@ -1,18 +1,17 @@
-package main.java.ru.r1mok;
+package main.java.ru.r1mok.firstTask;
+
+import main.java.ru.r1mok.firstTask.City;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
-        String fileName = "inputFile.csv";
+    public static List<City> parseCSV(String fileName) throws FileNotFoundException {
+        List<City> resultList = new ArrayList<>();
         Scanner scanner = new Scanner(new File(fileName));
-        List<City> cities = new ArrayList<>();
         while (scanner.hasNextLine()) {
             City city = new City();
             String[] inputStr = scanner.nextLine().split(";");
@@ -25,8 +24,13 @@ public class Main {
             } else {
                 city.setFoundation("");
             }
-            cities.add(city);
+            resultList.add(city);
         }
+        return resultList;
+    }
+    public static void main(String[] args) throws FileNotFoundException {
+        String fileName = "inputFile.csv";
+        List<City> cities = parseCSV(fileName);
         for (City city : cities) {
             System.out.println(city);
         }
